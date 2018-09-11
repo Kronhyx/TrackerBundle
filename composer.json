@@ -1,0 +1,14 @@
+{
+    "name": "kronhyx/tracker-bundle",
+    "description": "Symfony bundle for track entity changes",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Randy Tellez Galán",
+            "email": "Kronhyx@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
