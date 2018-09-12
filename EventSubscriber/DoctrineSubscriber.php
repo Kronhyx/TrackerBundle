@@ -12,7 +12,7 @@ namespace Kronhyx\TrackerBundle\EventSubscriber;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
-use Kronhyx\TrackeraBundle\Entity\Tracker;
+use Kronhyx\TrackerBundle\Entity\Tracker;
 use Kronhyx\TrackerBundle\Entity\TrackerTrait;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
