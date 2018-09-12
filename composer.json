@@ -13,7 +13,11 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7",
-        "symfony/lts": "^4@dev"
+        "symfony/event-dispatcher": "^4.2@dev",
+        "symfony/http-kernel": "^4.2@dev",
+        "symfony/config": "^4.2@dev",
+        "symfony/dependency-injection": "^4.2@dev",
+        "symfony/orm-pack": "dev-master"
     },
     "autoload": {
         "psr-4": {
