@@ -1,6 +1,6 @@
 <?php
 
-namespace Kronhyx\AuditoriaBundle\DependencyInjection;
+namespace Kronhyx\TrackerBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
