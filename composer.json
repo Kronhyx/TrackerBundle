@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7",
-        "symfony/framework-bundle": "^3.4",
+        "symfony/framework-bundle": "~3.2|~4.0",
         "symfony/orm-pack": "^1.0"
     },
     "autoload": {
