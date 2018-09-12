@@ -9,11 +9,9 @@
             "email": "Kronhyx@gmail.com"
         }
     ],
-    "keywords" : ["Symfony", "Oauth2"],
-    "homepage" : "https://github.com/Kronhyx/TrackerBundle",
+    "homepage": "https://github.com/Kronhyx/TrackerBundle",
     "minimum-stability": "dev",
     "require": {
-        "roave/security-advisories": "dev-master",
         "php": ">=7",
         "symfony/lts": "^4@dev"
     },
