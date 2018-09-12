@@ -10,26 +10,26 @@ namespace Kronhyx\TrackerBundle\EventSubscriber;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Kronhyx\TrackerBundle\Entity\Tracker;
 use Kronhyx\TrackerBundle\Entity\TrackerTrait;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class DoctrineSubscriber
  * @package Kronhyx\TrackerBundle\EventSubscriber
  * @author Randy Tellez Galán <kronhyx@gmail.com>
  */
-class DoctrineSubscriber implements EventSubscriberInterface
+class DoctrineSubscriber implements EventSubscriber
 {
     /**
      * @return array
      */
-    public static function getSubscribedEvents(): array
+    public function getSubscribedEvents(): array
     {
         return [
-            Events::prePersist => Events::prePersist
+            Events::prePersist
         ];
     }
 
