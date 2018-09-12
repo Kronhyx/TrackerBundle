@@ -19,4 +19,13 @@ trait TrackerTrait
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $tracker;
+
+    /**
+     * @return Tracker
+     */
+    public function getTracker(): Tracker
+    {
+        return $this->tracker;
+    }
+
 }

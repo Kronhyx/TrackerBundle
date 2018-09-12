@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace Kronhyx\TrackeraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
