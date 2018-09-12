@@ -44,10 +44,10 @@ class DoctrineSubscriber implements EventSubscriberInterface
         $collection = new ArrayCollection($reflection->getTraitAliases());
 
         if ($collection->contains(TrackerTrait::class)) {
-
             /**@var Tracker $tracker */
-            $tracker = $entity->getTracker();
+            $tracker = new Tracker();
             $tracker->setCreatedAt(new \DateTime());
+            $entity->setTracker($tracker);
         }
 
     }
