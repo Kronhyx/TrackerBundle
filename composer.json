@@ -16,6 +16,11 @@
         "symfony/framework-bundle": "~3.2|~4.0",
         "symfony/orm-pack": "^1.0"
     },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+        ,
+        "symfony/phpunit-bridge": "^4.0"
+    },
     "autoload": {
         "psr-4": {
             "Kronhyx\\TrackerBundle\\": ""
