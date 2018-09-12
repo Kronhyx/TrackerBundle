@@ -13,10 +13,10 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7",
-        "symfony/event-dispatcher": "^4@dev",
-        "symfony/http-kernel": "^4@dev",
-        "symfony/config": "^4@dev",
-        "symfony/dependency-injection": "^4@dev",
+        "symfony/event-dispatcher": "~3.4",
+        "symfony/http-kernel": "~3.4",
+        "symfony/config": "~3.4",
+        "symfony/dependency-injection": "~3.4",
         "symfony/orm-pack": "dev-master"
     },
     "autoload": {
