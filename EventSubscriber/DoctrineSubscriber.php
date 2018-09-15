@@ -9,12 +9,12 @@
 namespace Kronhyx\TrackerBundle\EventSubscriber;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Kronhyx\TrackerBundle\Entity\Tracker;
-use Kronhyx\TrackerBundle\Entity\TrackerTrait;
 
 /**
  * Class DoctrineSubscriber
@@ -29,8 +29,24 @@ class DoctrineSubscriber implements EventSubscriber
     public function getSubscribedEvents(): array
     {
         return [
-            Events::prePersist
+            Events::prePersist,
+            Events::preUpdate,
+            Events::preRemove,
         ];
+    }
+
+    private function isTrackeable(object $entity)
+    {
+        $reflection = new \ReflectionClass($entity);
+
+        if ($reflection->hasProperty('tracker')) {
+            $parser = new AnnotationReader();
+            /**@var ManyToOne $relation */
+            $relation = $parser->getPropertyAnnotation($reflection->getProperty('tracker'), ManyToOne::class);
+            return ($relation->targetEntity === Tracker::class);
+        }
+
+        return false;
     }
 
     /**
@@ -40,14 +56,44 @@ class DoctrineSubscriber implements EventSubscriber
     public function prePersist(LifecycleEventArgs $eventArgs): void
     {
         $entity = $eventArgs->getEntity();
-        $reflection = new \ReflectionClass($entity);
-        $collection = new ArrayCollection($reflection->getTraitAliases());
 
-        if ($collection->contains(TrackerTrait::class)) {
-            /**@var Tracker $tracker */
+        if ($this->isTrackeable($entity)) {
             $tracker = new Tracker();
+
             $tracker->setCreatedAt(new \DateTime());
             $entity->setTracker($tracker);
+        }
+
+    }
+
+    /**
+     * @param LifecycleEventArgs $eventArgs
+     * @throws \ReflectionException
+     */
+    public function preUpdate(LifecycleEventArgs $eventArgs): void
+    {
+        $entity = $eventArgs->getEntity();
+
+        if ($this->isTrackeable($entity)) {
+            /**@var Tracker $tracker */
+            $tracker = $entity->getTracker();
+            $tracker->setUpdatedAt(new \DateTime());
+        }
+
+    }
+
+    /**
+     * @param LifecycleEventArgs $eventArgs
+     * @throws \ReflectionException
+     */
+    public function preRemove(LifecycleEventArgs $eventArgs): void
+    {
+        $entity = $eventArgs->getEntity();
+
+        if ($this->isTrackeable($entity)) {
+            /**@var Tracker $tracker */
+            $tracker = $entity->getTracker();
+            $tracker->setDeletedAt(new \DateTime());
         }
 
     }

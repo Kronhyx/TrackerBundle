@@ -28,31 +28,31 @@ class Tracker
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="object")
+     * @ORM\Column(type="object", nullable=true)
      */
     private $createdBy;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="object")
+     * @ORM\Column(type="object", nullable=true)
      */
     private $updatedBy;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $deletedAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="object")
+     * @ORM\Column(type="object", nullable=true)
      */
     private $deletedBy;
 
@@ -172,5 +172,11 @@ class Tracker
         return $this;
     }
 
-
+    /**
+     * @return bool
+     */
+    public function isDeleted(): bool
+    {
+        return null !== $this->deletedAt;
+    }
 }
