@@ -1,0 +1,4 @@
+services:
+  Kronhyx\TrackerBundle\EventSubscriber\DoctrineSubscriber:
+    tags:
+    - { name: doctrine.event_subscriber }
